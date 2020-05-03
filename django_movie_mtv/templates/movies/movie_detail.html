@@ -29,13 +29,17 @@
                     <li style="list-style: none">
                         <span><b>Directors:</b>
                             {% for director in movie.directors.all %}
-                                {{ director.name }}
+                                <a href="{{ director.get_absolute_url }}">
+                                    {{ director.name }}
+                                </a>
                             {% endfor %}
                         </span>
                     </li>
                     <li style="list-style: none"><span><b>Actors:</b>
-                            {% for actor in movie.directors.all %}
-                                {{ actor.name }}
+                            {% for actor in movie.actors.all %}
+                                <a href="{{ actor.get_absolute_url }}">
+                                    {{ actor.name }}
+                                </a>
                             {% endfor %}
                     </span>
                     </li>
