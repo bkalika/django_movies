@@ -1,4 +1,4 @@
-
+{% load movie_tags %}
 <header class="header">
 <div class="container-fluid px-lg-5">
     <!-- nav -->
@@ -17,7 +17,7 @@
                 <a href="#">Категории <span class="fa fa-angle-down" aria-hidden="true"></span></a>
                 <input type="checkbox" id="drop-2">
                 <ul>
-
+                        {% get_categories as categories %}
                         {% for category in categories %}
                             <li><a href="/">{{ category.name }}</a></li>
                         {% endfor %}
