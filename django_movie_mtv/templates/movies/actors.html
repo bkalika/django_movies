@@ -34,17 +34,18 @@
                     </li>
                     <li><span><b>Actors:</b>
                             {% for movie in actor.film_actor.all %}
+                            <a href="{{ movie.get_absolute_url }}">
                                 {{ movie.title }}
+                            </a>
                             {% endfor %}
                     </span>
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
         <div class="row sub-para-w3layouts mt-5">
 
-            <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
+            <h3 class="shop-sing editContent">
                 About {{ actor.name }}</h3>
             <p class="editContent">{{ actor.description|safe }}</p>
         </div>
