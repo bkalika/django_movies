@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import redirect
@@ -21,6 +22,7 @@ class MovieView(GenreYear, ListView):
     """List of movies"""
     model = Movie
     queryset = Movie.objects.filter(draft=False)
+    paginate_by = 2
 
     # template_name = "movies/movie_list.html"
     # !!!instead of template_name we can rename out html file (movie.html) to
@@ -67,12 +69,20 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     """Filter of movies"""
+    paginate_by = 1
+
     def get_queryset(self):
         queryset = Movie.objects.filter(
             Q(year__in=self.request.GET.getlist("year")) |
             Q(genres__in=self.request.GET.getlist("genre"))
-        )
+        ).distinct()
         return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["year"] = ''.join(f'year={x}&' for x in self.request.GET.getlist("year"))
+        context["genre"] = ''.join(f'genre={x}&' for x in self.request.GET.getlist("genre"))
+        return context
 
 
 class JsonFilterMoviesView(ListView):
@@ -110,3 +120,18 @@ class AddStarRating(View):
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+class Search(ListView):
+    """Search movies"""
+    paginate_by = 3
+
+    def get_queryset(self):
+        search_query = self.request.GET.get('q', None)
+        if search_query:
+            return Movie.objects.filter(title__icontains=search_query)
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context

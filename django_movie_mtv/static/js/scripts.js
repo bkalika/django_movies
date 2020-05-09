@@ -11,15 +11,15 @@ function ajaxSend(url, params) {
         .catch(error => console.error(error))
 }
 
-const forms = document.querySelector( selectors: 'form[name=filter]');
-
-forms.addEventListener(type:'submit', listener:function (e:Event){
-    // Get data from the form
-    e.preventDefault();
-    let url = this.action;
-    let params = new URLSearchParams(new FormData(this)).toString();
-    ajaxSend(url, params);
-});
+//const forms = document.querySelector( selectors: 'form[name=filter]');
+//
+//forms.addEventListener(type:'submit', listener:function (e:Event){
+//    // Get data from the form
+//    e.preventDefault();
+//    let url = this.action;
+//    let params = new URLSearchParams(new FormData(this)).toString();
+//    ajaxSend(url, params);
+//});
 
 function render(data) {
     // Render template

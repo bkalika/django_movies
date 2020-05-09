@@ -76,7 +76,7 @@ class MovieAdmin(admin.ModelAdmin):
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.poster.url} width="100" height="110">')
 
-    def unpublish(self, request, queryset):
+    def unpublished(self, request, queryset):
         """Removed from publication"""
         row_update = queryset.update(draft=True)
         if row_update == 1:
@@ -97,8 +97,8 @@ class MovieAdmin(admin.ModelAdmin):
     publish.short_description = "Publish"
     publish.allowed_permissions = ('change',)
 
-    unpublish.short_description = "Unpublish"
-    unpublish.allowed_permissions = ('change',)
+    unpublished.short_description = "Unpublished"
+    unpublished.allowed_permissions = ('change',)
 
     get_image.short_description = "Poster"
 

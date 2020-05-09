@@ -211,7 +211,7 @@ nav ul ul li a {
     display: block;
 }
 
-/* Second, Third and more Tiers	
+/* Second, Third and more Tiers
  * We move the 2nd and 3rd etc tier dropdowns to the left
  * by the amount of the width of the first tier.
 */
@@ -382,7 +382,7 @@ li > a:only-child:after {
 
 /*--/banner --*/
 .main-banner {
-    background: url(../images/banner.jpg)no-repeat center;
+    background: url(../images/simple-pic.jpg)no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -393,7 +393,7 @@ li > a:only-child:after {
 }
 
 .main-banner.inner {
-    background: url(../images/banner.jpg)no-repeat center;
+    background: url(../images/simple-pic.jpg)no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -405,7 +405,7 @@ li > a:only-child:after {
 .bg1 {
     background-color: rgba(0, 0, 0, 0);
     margin-top: 0;
-    background-image: url('../single-post-pic.jpg');
+    background-image: url('../simple.jpg');
 }
 /*-- place holder --*/
 
@@ -437,7 +437,7 @@ li > a:only-child:after {
 .banner-info h3 {
     font-size: 3.5em;
     letter-spacing: 2px;
-    color: #fff;
+    color: #01acde;  /*#fff;*/
     text-transform: uppercase;
     text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
 }
@@ -687,6 +687,8 @@ section#brands {
     float: right;
     background: url('../images/star-off-big.png');
     background-size: 30px 30px;
+    list-style: none;
+    display: list-item;
 }
 
 .rating > label:before {
@@ -698,6 +700,40 @@ section#brands {
     background: url('../images/star-on-big.png');
     background-size: 30px 30px;
 }
+.rating > label:hover {
+    background: url('../images/star-on-big.png');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+}
+
+/* pagination */
+.pagination__item {
+    transition: all .2s ease-in-out;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    z-index: 1;
+    position: relative;
+    margin: 0 2px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flwx-pack: center;
+    justify-content: center;
+    -ms-flwx-align: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+     .pagination__item {
+        margin: 0 2px;
+        width: 33px;
+        height: 33px;
+     }
+}
+
+
 
 /*--about-grids--*/
 .service-content {
